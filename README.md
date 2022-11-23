@@ -7,8 +7,8 @@ This is our implementation for the course project of CSC3170, 2022 Fall, CUHK(SZ
 
 <!-- Please fill in "x" to replace the blank space between "[]" to tick the todo item; it's ticked on the first one by default. -->
 
-- [x] **Application with Database System(s)**
-- [ ] **Implementation of a Database System**
+- [ ] **Application with Database System(s)**
+- [x] **Implementation of a Database System**
 
 ## Team Members
 
@@ -18,11 +18,15 @@ Our team consists of the following members, listed in the table below (the team 
 
 | Student ID | Student Name | GitHub Account (in Email) |
 | ---------- | ------------ | ------------------------- |
-| 123010245  | 张三 🚩      | sanzhang@gmail.com        |
-| 123010345  | 李四         | sili@outlook.com          |
-| 123030245  | 王五         | wuwang@foxmail.com        |
-| 123020245  | 陈六         | liuchen@qq.com            |
-| 123010249  | 朱九         | jiuzhu@163.com            |
+| 120090609  | 刘恒睿 🚩    | 120090609@link.cuhk.edu.cn      |
+| 120090860  | 李楠轩        | 120090860@link.cuhk.edu.cn      |
+| 120090495  | 张家荣        | 120090495@link.cuhk.edu.cn      |
+| 119010269  | 宋泽方        | 119010269@link.cuhk.edu.cn      |
+| 120090565  | 胡文涵        | 120090565@link.cuhk.edu.cn      |
+| 119010216  | 路东竹渊      | 120090860@link.cuhk.edu.cn      |
+| 120090771  | 邱纬纶        | 120090495@link.cuhk.edu.cn      |
+| 120090224  | 杨尚霖        | 119010269@link.cuhk.edu.cn      |
+| 120090470  | 李鹏          | 120090565@link.cuhk.edu.cn      |
 
 ## Project Specification
 
@@ -30,12 +34,10 @@ Our team consists of the following members, listed in the table below (the team 
 
 After thorough discussion, our team made the choice and the specification information is listed below:
 
-- Our option choice is: **Option 1**
-- Our branch choice is: **Branch 1**
-- The difficulty level is: **Normal**
+- Our option choice is: **Option 3**
 
-As for Option 2, our topic background specification can be found in [background-specification.md](background-specification.md).
 
 ## Project Abstract
 
 <!-- TODO -->
+This project involves writing a miniature relational database management system (DBMS) that stores tables of data, where a table consists of some number of labeled columns of information. Our system will include a very simple query language for extracting information from these tables. For the purposes of this project, we will deal only with very small databases, and therefore will not consider speed and efficiency at all.

@@ -23,10 +23,10 @@ Our team consists of the following members, listed in the table below (the team 
 | 120090495  | 张家荣        | 120090495@link.cuhk.edu.cn      |
 | 119010269  | 宋泽方        | 119010269@link.cuhk.edu.cn      |
 | 120090565  | 胡文涵        | 120090565@link.cuhk.edu.cn      |
-| 119010216  | 路东竹渊      | 120090860@link.cuhk.edu.cn      |
-| 120090771  | 邱纬纶        | 120090495@link.cuhk.edu.cn      |
-| 120090224  | 杨尚霖        | 119010269@link.cuhk.edu.cn      |
-| 120090470  | 李鹏          | 120090565@link.cuhk.edu.cn      |
+| 119010216  | 路东竹渊      | 119010216@link.cuhk.edu.cn      |
+| 120090771  | 邱纬纶        | 120090771@link.cuhk.edu.cn      |
+| 120090224  | 杨尚霖        | 120090224@link.cuhk.edu.cn      |
+| 120090470  | 李鹏          | 120090470@link.cuhk.edu.cn      |
 
 ## Project Specification
 

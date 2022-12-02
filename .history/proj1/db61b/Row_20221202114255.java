@@ -1,8 +1,14 @@
+// This is a SUGGESTED skeleton for a class that describes a single Row of a
+// Table. You can throw this away if you want, but it is a good idea to try to
+// understand it first.  Our solution changes or adds about 10 lines in this
+// skeleton.
+
+// Comments that start with "//" are intended to be removed from your
+// solutions.
 package db61b;
 
 import java.util.Arrays;
 import java.util.List;
-import static db61b.Utils.*;
 
 /** A single row of a database.
  *  @author
@@ -34,40 +40,22 @@ class Row {
      *  consider converting this spec to HTML using the Javadoc command.
      */
     Row(List<Column> columns, Row... rows) {
-        int M = columns.size();
-        String[] new_row = new String[M];
-        for (int i = 0; i < M; i++) {
-            new_row[i] = columns.get(i).getFrom(rows);
-        }
-        _data = new_row;
+        // FILL IN
     }
 
     /** Return my number of columns. */
     int size() {
-        return _data.length;
+        return 0;  // REPLACE WITH SOLUTION
     }
 
     /** Return the value of my Kth column.  Requires that 0 <= K < size(). */
     String get(int k) {
-        if (k >= 0 && k < size()) {
-            return _data[k];
-        } 
-        else {
-            throw error("IndexOutOfBounds");
-        }
+        return null; // REPLACE WITH SOLUTION
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this.size() != ((Row) obj).size()) {
-            return false;
-        }
-        for (int i = 0; i < this.size(); i++) {
-            if (!(this.get(i).equals(((Row) obj).get(i)))) {
-                return false;
-            }
-        }
-        return true;
+        return false; // REPLACE WITH SOLUTION
     }
 
     /* NOTE: Whenever you override the .equals() method for a class, you
@@ -86,4 +74,3 @@ class Row {
     /** Contents of this row. */
     private String[] _data;
 }
-

@@ -107,6 +107,7 @@ class Table implements Iterable<Row> {
         table = null;
         try {
             input = new BufferedReader(new FileReader(name + ".db"));
+            // input = new BufferedReader(new FileReader("proj1/testing/" + name + ".db"));
             String header = input.readLine();
             if (header == null) {
                 throw error("missing header in DB file");

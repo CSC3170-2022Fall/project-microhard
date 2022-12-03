@@ -164,7 +164,7 @@ class CommandInterpreter {
     void createStatement() {
         _input.next("create");
         _input.next("table");
-        String name = name()
+        String name = name();
         Table table = tableDefinition();
         _input.next(";");
         _database.put(name, table);

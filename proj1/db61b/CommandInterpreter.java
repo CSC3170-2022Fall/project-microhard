@@ -130,7 +130,7 @@ class CommandInterpreter {
     /** Parse and execute one statement from the token stream.  Return true
      *  iff the command is something other than quit or exit. */
     boolean statement() {
-        switch (_input.peek()) {
+        switch (_input.peek().toLowerCase()) {
         case "create":
             createStatement();
             break;

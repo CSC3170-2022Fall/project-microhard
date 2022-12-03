@@ -21,7 +21,13 @@ class Database {
     /** Return the Table whose name is NAME stored in this database, or null
      *  if there is no such table. */
     public Table get(String name) {
-        return _database.get(name);             // REPLACE WITH SOLUTION
+        // return _database.get(name);             // REPLACE WITH SOLUTION
+        for (Map.Entry<String, Table> entry : _database.entrySet()) {
+            if (entry.getKey().toLowerCase().equals(name.toLowerCase())) {
+                return _database.get(entry.getKey());
+            }
+        }
+        return null;
     }
 
     /** Set or replace the table named NAME in THIS to TABLE.  TABLE and

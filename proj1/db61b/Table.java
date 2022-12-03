@@ -65,7 +65,7 @@ class Table implements Iterable<Row> {
     public int findColumn(String title) {
         int columnIndex = -1;
         for (int i = 0; i < table_titles.length; i++) {
-            if (title.equals(table_titles[i])) {
+            if (title.toLowerCase().equals(table_titles[i].toLowerCase())) {
                 columnIndex = i;
                 break;
             }

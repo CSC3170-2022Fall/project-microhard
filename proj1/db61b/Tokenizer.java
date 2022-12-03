@@ -113,7 +113,8 @@ class Tokenizer {
     /** Read and return the next token, if it equals P.  Otherwise throw
      *  DBException */
     String next(String p) {
-        if (!nextIs(p)) {
+        String tmp = p.toLowerCase();
+        if (!nextIs(tmp)) {
             if (nextIs("*EOF*")) {
                 throw error("unexpected end of input");
             } else {
@@ -154,7 +155,7 @@ class Tokenizer {
     /** Return true iff the next token equals P.  Throws DBException on
      *  encountering a lexical error. */
     boolean nextIs(String p) {
-        String token = peek();
+        String token = peek().toLowerCase();
         return token.equals(p);
     }
 

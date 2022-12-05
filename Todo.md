@@ -13,3 +13,4 @@
 - [ ] **Realizing *GROUP BY* Clause**
 - [ ] **Realizing *ORDER BY* Clause**
 - [ ] **Optimizing the error processing**
+- [ ] **Optimizing the speed/efficiency of data handling**

@@ -264,25 +264,45 @@ class CommandInterpreter {
             col.add(columnName());
         }
         _input.next("from");
-        /* Here we only consider up to two tables following from */
+        /* Here we consider the general case */
+        ArrayList<Table> tab = new ArrayList<Table>();
         Table table1 = tableName();
-        Table table2 = null;
-        if (_input.nextIf(",")) {
-            table2 = tableName();
+        tab.add(table1);
+        while (_input.nextIf(",")) {
+            Table table2 = tableName();
+            tab.add(table2);
         }
-        ArrayList<Condition> con = new ArrayList<Condition>();
-        if (_input.nextIf("where")) {
-            if (table2 == null) { /* Only one table involved */
-                con = conditionClause(table1);
-            } else {
-                con = conditionClause(table1, table2);
+
+        Table joined_table = null;
+        if (tab.size() == 1) {
+            joined_table = tab.get(0);
+        } else {
+            ArrayList<Condition> con_aux = new ArrayList<Condition>();
+            Table t1 = tab.get(0); Table t2 = tab.get(1);
+            joined_table = t1.select(t2, rm_dup(getAllCol(t1), getAllCol(t2)), con_aux);
+            for (int i = 2; i < tab.size(); i++) {
+                joined_table = joined_table.select(tab.get(i), 
+                rm_dup(getAllCol(joined_table), getAllCol(tab.get(i))), con_aux);
             }
         }
-        if (table2 == null) {
-            return table1.select(col, con);
-        } else {
-            return table1.select(table2, col, con);
+
+        ArrayList<Condition> con = new ArrayList<Condition>();
+        if (_input.nextIf("where")) {
+            // if (table2 == null) { /* Only one table involved */
+            //     con = conditionClause(tab.get(0));
+            // } else {
+            //     con = conditionClause(tab.toArray(new Table[0]));
+            // }
+            con = conditionClause(joined_table);
         }
+        
+        return joined_table.select(col, con);
+        // return tab.get(0);
+        // if (table2 == null) {
+        //     return table1.select(col, con);
+        // } else {
+        //     return table1.select(table2, col, con);
+        // }
     }
 
     ArrayList<String> rm_dup(ArrayList<String> l1, ArrayList<String> l2) {

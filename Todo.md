@@ -15,3 +15,4 @@
 - [ ] **Realizing *ORDER BY* Clause**
 - [ ] **Optimizing the error processing**
 - [ ] **Optimizing the speed/efficiency of data handling**
+- [ ] **Realizing *Aggregate Function* including *avg*, *min*, *max*, *count*, etc**

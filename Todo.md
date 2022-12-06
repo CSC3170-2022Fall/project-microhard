@@ -6,6 +6,7 @@
 - [x] **Realized *SELECT* Clause**
 - [x] **Realized *FROM* Clause**
 - [x] **Realized *WHERE* Clause**
+- [x] **Realized *FROM* Clause for more than two tables**
 
 ## Functions in Process
 

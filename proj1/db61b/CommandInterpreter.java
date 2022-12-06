@@ -285,6 +285,25 @@ class CommandInterpreter {
         }
     }
 
+    ArrayList<String> rm_dup(ArrayList<String> l1, ArrayList<String> l2) {
+        ArrayList<String> result = new ArrayList<String>();
+        result.addAll(l1);
+        for (int i = 0; i < l2.size(); i++) {
+            if (!l1.contains(l2.get(i))) {
+                result.add(l2.get(i));
+            }
+        }
+        return result;
+    }
+
+    ArrayList<String> getAllCol(Table t) {
+        ArrayList<String> result = new ArrayList<String>();
+        for (int i = 0; i < t.columns(); i++) {
+            result.add(t.getTitle(i));
+        }
+        return result;
+    }
+
     /** Parse and return a valid name (identifier) from the token stream. */
     String name() {
         return _input.next(Tokenizer.IDENTIFIER);

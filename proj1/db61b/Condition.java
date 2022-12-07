@@ -53,7 +53,7 @@ class Condition {
             return false;
     }
 
-    /** Return true iff ROWS satisfies all CONDITIONS. */
+    /** AND case: Return true iff ROWS satisfies all CONDITIONS. */
     static boolean test(List<Condition> conditions, Row... rows) {
         for (Condition cond : conditions) {
             if (!cond.test(rows)) {
@@ -61,6 +61,16 @@ class Condition {
             }
         }
         return true;
+    }
+
+    /* OR case: Return false iff ROWs satisfies any one CONDITION. */
+    static boolean testor(List<Condition> conditions, Row... rows) {
+        for (Condition cond : conditions) {
+            if (cond.test(rows)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /** The operands of this condition.  _col2 is null if the second operand

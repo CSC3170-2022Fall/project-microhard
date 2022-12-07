@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
 
     /** Version designation for this program. */
-    private static final String VERSION = "2.2";
+    private static final String VERSION = "2.3";
 
     /** Starting with an empty database, read and execute commands from
      *  System.in until receiving a 'quit' ('exit') command or until

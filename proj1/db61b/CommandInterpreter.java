@@ -275,7 +275,7 @@ class CommandInterpreter {
                 ArrayList<String> col_list = getAllCol(tab_item);
                 col.addAll(col_list);
             }
-            /* Eliminate the duplicate column name */
+            /* Eliminate the duplicate column names */
             ArrayList<String> listTemp = new ArrayList<String>(); 
             for(int j=0; j<col.size(); j++){  
             if(!listTemp.contains(col.get(j))){  
@@ -284,7 +284,7 @@ class CommandInterpreter {
         }
         col = listTemp;
     }
-        /* Select by the specified columns*/
+        /* Select by the specified column names*/
         else {
             col.add(columnName());
         while (_input.nextIf(",")) {

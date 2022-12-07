@@ -9,7 +9,6 @@
 package db61b;
 
 import java.io.PrintStream;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -122,6 +121,7 @@ class CommandInterpreter {
 
     /** A new CommandInterpreter executing commands read from INP, writing
      *  prompts on PROMPTER, if it is non-null. */
+ 
     CommandInterpreter(Scanner inp, PrintStream prompter) {
         _input = new Tokenizer(inp, prompter);
         _database = new Database();
@@ -259,24 +259,52 @@ class CommandInterpreter {
     Table selectClause() {
         _input.next("select");
         ArrayList<String> col = new ArrayList<String>();
-        col.add(columnName());
+        ArrayList<Table> tab = new ArrayList<Table>();
+        /* Select all */
+        if (_input.nextIf("*")) {
+            _input.next("from");
+            /* We need to get all the columns from the required tables.*/
+            Table tab1 = tableName();
+            tab.add(tab1);
+            while (_input.nextIf(",")) {
+                Table tab2 = tableName();
+                tab.add(tab2);
+            }
+            for (int i = 0; i < tab.size(); i++) {
+                Table tab_item = tab.get(i);
+                ArrayList<String> col_list = getAllCol(tab_item);
+                col.addAll(col_list);
+            }
+            /* Eliminate the duplicate column name */
+            ArrayList<String> listTemp = new ArrayList<String>(); 
+            for(int j=0; j<col.size(); j++){  
+            if(!listTemp.contains(col.get(j))){  
+                listTemp.add(col.get(j));  
+            }
+        }
+        col = listTemp;
+    }
+        /* Select by the specified columns*/
+        else {
+            col.add(columnName());
         while (_input.nextIf(",")) {
             col.add(columnName());
         }
         _input.next("from");
         /* Here we consider the general case */
-        ArrayList<Table> tab = new ArrayList<Table>();
         Table table1 = tableName();
         tab.add(table1);
         while (_input.nextIf(",")) {
             Table table2 = tableName();
             tab.add(table2);
         }
+        }
 
         Table joined_table = null;
         if (tab.size() == 1) {
             joined_table = tab.get(0);
-        } else {
+        } 
+        else {
             ArrayList<Condition> con_aux = new ArrayList<Condition>();
             Table t1 = tab.get(0); Table t2 = tab.get(1);
             joined_table = t1.select(t2, rm_dup(getAllCol(t1), getAllCol(t2)), con_aux);
@@ -303,6 +331,7 @@ class CommandInterpreter {
         // } else {
         //     return table1.select(table2, col, con);
         // }
+
     }
 
     ArrayList<String> rm_dup(ArrayList<String> l1, ArrayList<String> l2) {

@@ -54,7 +54,22 @@ class Condition {
     }
 
     /** AND case: Return true iff ROWS satisfies all CONDITIONS. */
-    static boolean test(List<Condition> conditions, Row... rows) {
+    static boolean test(List<Condition> conditions, String operations, Row... rows) {
+        //Single case
+        if (operations.charAt(0) == '0') return testAnd(conditions, rows);
+        if (operations.charAt(0) == '1') return testOr(conditions, rows);
+
+        /*Complex case
+        boolean conRes[] = new boolean[conditions.size()];
+        for (int i = 0; i < conditions.size(); i++){
+            conRes[i] = conditions.get(i).test(rows);
+        }
+        */
+        return true;
+    }
+
+    /* All AND/OR case: Return false iff ROWs satisfies any one CONDITION. */
+    static boolean testAnd(List<Condition> conditions, Row... rows) {
         for (Condition cond : conditions) {
             if (!cond.test(rows)) {
                 return false;
@@ -62,9 +77,7 @@ class Condition {
         }
         return true;
     }
-
-    /* OR case: Return false iff ROWs satisfies any one CONDITION. */
-    static boolean testor(List<Condition> conditions, Row... rows) {
+    static boolean testOr(List<Condition> conditions, Row... rows) {
         for (Condition cond : conditions) {
             if (cond.test(rows)) {
                 return true;

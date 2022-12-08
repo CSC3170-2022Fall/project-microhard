@@ -184,7 +184,7 @@ class Table implements Iterable<Row> {
 
     /** Return a new Table whose columns are COLUMNNAMES, selected from
      *  rows of this table that satisfy CONDITIONS. */
-    Table select(List<String> columnNames, List<Condition> conditions) {
+    Table select(List<String> columnNames, List<Condition> conditions, String operations) {
         Table result = new Table(columnNames);
         // FILL IN
         ArrayList<Column> newColumns = new ArrayList<Column>();
@@ -197,9 +197,9 @@ class Table implements Iterable<Row> {
             }
         } else {
             for (Row r : _rows) {
-                if (Condition.test(conditions, r)) {
+                if (Condition.test(conditions, operations, r)) {
                     result.add(new Row(newColumns, r));
-                } 
+                }
             }
         }
         return result;
@@ -211,8 +211,12 @@ class Table implements Iterable<Row> {
     Table select(Table table2, List<String> columnNames,
                  List<Condition> conditions) {
         Table result = new Table(columnNames);
+
+        StringBuffer operations = new StringBuffer(conditions.size());
+        for (int i = 1; i < conditions.size(); i++) operations.append("1");
+
         if (table2 == null) {
-            result = this.select(columnNames, conditions);
+            result = this.select(columnNames, conditions, operations.toString());
             return result;
         }
         List<String> common_column_name;
@@ -252,7 +256,7 @@ class Table implements Iterable<Row> {
         } else {
             for (Row thisRow : this) {
                 for (Row table2Row : table2) {
-                    if (equijoin(common1, common2, thisRow, table2Row) && Condition.test(conditions, thisRow, table2Row)) {
+                    if (equijoin(common1, common2, thisRow, table2Row) && Condition.test(conditions, operations.toString(), thisRow, table2Row)) {
                         result.add(new Row(common, thisRow, table2Row));
                     }
                 }

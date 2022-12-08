@@ -314,7 +314,7 @@ class CommandInterpreter {
             }
         }
 
-        ArrayList<Condition> con = new ArrayList<Condition>();
+        ConditionClause con = new ConditionClause();
         if (_input.nextIf("where")) {
             // if (table2 == null) { /* Only one table involved */
             //     con = conditionClause(tab.get(0));
@@ -324,7 +324,7 @@ class CommandInterpreter {
             con = conditionClause(joined_table);
         }
         
-        return joined_table.select(col, con);
+        return joined_table.select(col, con.conList, con.operations);
         // return tab.get(0);
         // if (table2 == null) {
         //     return table1.select(col, con);
@@ -386,13 +386,31 @@ class CommandInterpreter {
     /** Parse and return a list of Conditions that apply to TABLES from the
      *  token stream.  This denotes the conjunction (`and') zero
      *  or more Conditions. */
-    ArrayList<Condition> conditionClause(Table... tables) {
+    public class ConditionClause{
+        ArrayList<Condition> conList;
+        String operations;
+        public ConditionClause() {
+            this.conList = null;
+            this.operations = "";
+        }
+        public ConditionClause(ArrayList<Condition> conList, String operations) {
+            this.conList = conList;
+            this.operations = operations;
+        }
+    }
+
+    ConditionClause conditionClause(Table... tables) {
         ArrayList<Condition> conList = new ArrayList<Condition>();
         conList.add(condition(tables));
-        while (_input.nextIf("and")){
+        StringBuffer operation = new StringBuffer("");
+        while (_input.nextIs("and") || _input.nextIs("or")){
+            if (_input.nextIf("and"))
+                operation.append("0");
+            if (_input.nextIf("or"))
+                operation.append("1");
             conList.add(condition(tables));
         }
-        return conList;
+        return new ConditionClause(conList, operation.toString());
     }
 
     /** Parse and return a Condition that applies to TABLES from the

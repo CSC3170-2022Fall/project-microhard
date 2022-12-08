@@ -1,4 +1,4 @@
-# Functions need to do
+# Planned Functions
 
 ## Realized Functions
 
@@ -7,10 +7,10 @@
 - [x] **Realized *FROM* Clause**
 - [x] **Realized *WHERE* Clause**
 - [x] **Realized *FROM* Clause for more than two tables**
+- [X] **Realizing *SELECT \** (select all) command**
 
 ## Functions in Process
 
-- [ ] **Realizing *SELECT \** (select all) command**
 - [ ] **Realizing *GROUP BY* Clause**
 - [ ] **Realizing *ORDER BY* Clause**
 - [ ] **Optimizing the error processing**

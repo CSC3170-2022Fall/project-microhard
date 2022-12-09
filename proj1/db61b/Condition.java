@@ -55,20 +55,31 @@ class Condition {
 
     /** AND case: Return true iff ROWS satisfies all CONDITIONS. */
     static boolean test(List<Condition> conditions, String operations, Row... rows) {
-        //Single case
+        /*Single case
         if (operations.charAt(0) == '0') return testAnd(conditions, rows);
         if (operations.charAt(0) == '1') return testOr(conditions, rows);
-
-        /*Complex case
-        boolean conRes[] = new boolean[conditions.size()];
-        for (int i = 0; i < conditions.size(); i++){
+         */
+        //Complex case
+        int n = conditions.size();
+        if (n == 0) return true;
+        boolean conRes[] = new boolean[n];
+        for (int i = 0; i < n; i++){
             conRes[i] = conditions.get(i).test(rows);
         }
-        */
-        return true;
+        boolean result = conRes[0];
+        for (int i = 0; i < n-1; i++){
+            if (operations.charAt(i) == '1'){
+                if (result) return true;
+                else result = true;
+            }
+            else{
+                result = result && conRes[i+1];
+            }
+        }
+        return result;
     }
 
-    /* All AND/OR case: Return false iff ROWs satisfies any one CONDITION. */
+    /* All AND/OR case: Return false iff ROWs satisfies any one CONDITION.
     static boolean testAnd(List<Condition> conditions, Row... rows) {
         for (Condition cond : conditions) {
             if (!cond.test(rows)) {
@@ -85,7 +96,7 @@ class Condition {
         }
         return false;
     }
-
+     */
     /** The operands of this condition.  _col2 is null if the second operand
      *  is a literal. */
     private Column _col1, _col2;

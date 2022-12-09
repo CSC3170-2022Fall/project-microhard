@@ -213,7 +213,7 @@ class Table implements Iterable<Row> {
         Table result = new Table(columnNames);
 
         StringBuffer operations = new StringBuffer(conditions.size());
-        for (int i = 1; i < conditions.size(); i++) operations.append("1");
+        for (int i = 1; i < conditions.size(); i++) operations.append("0");
 
         if (table2 == null) {
             result = this.select(columnNames, conditions, operations.toString());

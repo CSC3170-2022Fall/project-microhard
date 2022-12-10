@@ -66,7 +66,7 @@ class Condition {
         for (int i = 0; i < n-1; i++){
             if (operations.charAt(i) == '1'){
                 if (result) return true;
-                else result = true;
+                else result = conditions.get(i+1).test(rows);
             }
             else{
                 result = result && conditions.get(i+1).test(rows);

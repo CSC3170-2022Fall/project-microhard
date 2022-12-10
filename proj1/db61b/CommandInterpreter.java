@@ -332,28 +332,27 @@ class CommandInterpreter {
             /* Eliminate the duplicate column names */
             ArrayList<String> listTemp = new ArrayList<String>(); 
             for(int j=0; j<col.size(); j++){  
-            if(!listTemp.contains(col.get(j))){  
-                listTemp.add(col.get(j));  
-            }
+                if(!listTemp.contains(col.get(j))){  
+                    listTemp.add(col.get(j));  
+                }
+            } 
+            col = listTemp;
         }
-        col = listTemp;
-    }
         /* Select by the specified column names*/
         else {
             col.add(columnName());
-        while (_input.nextIf(",")) {
-            col.add(columnName());
+            while (_input.nextIf(",")) {
+                col.add(columnName());
+            }
+            _input.next("from");
+            /* Here we consider the general case */
+            Table table1 = tableName();
+            tab.add(table1);
+            while (_input.nextIf(",")) {
+                Table table2 = tableName();
+                tab.add(table2);
+            }
         }
-        _input.next("from");
-        /* Here we consider the general case */
-        Table table1 = tableName();
-        tab.add(table1);
-        while (_input.nextIf(",")) {
-            Table table2 = tableName();
-            tab.add(table2);
-        }
-        }
-
         Table joined_table = null;
         if (tab.size() == 1) {
             joined_table = tab.get(0);
@@ -367,27 +366,14 @@ class CommandInterpreter {
                 rm_dup(getAllCol(joined_table), getAllCol(tab.get(i))), con_aux);
             }
         }
-
         ConditionClause con = new ConditionClause();
         if (_input.nextIf("where")) {
-            // if (table2 == null) { /* Only one table involved */
-            //     con = conditionClause(tab.get(0));
-            // } else {
-            //     con = conditionClause(tab.toArray(new Table[0]));
-            // }
             con = conditionClause(joined_table);
         }
-        
         return joined_table.select(col, con.conList, con.operations);
-        // return tab.get(0);
-        // if (table2 == null) {
-        //     return table1.select(col, con);
-        // } else {
-        //     return table1.select(table2, col, con);
-        // }
-
     }
 
+    /* Combine two array lists of String type, then remove any duplicated items in the list */
     ArrayList<String> rm_dup(ArrayList<String> l1, ArrayList<String> l2) {
         ArrayList<String> result = new ArrayList<String>();
         result.addAll(l1);
@@ -399,6 +385,7 @@ class CommandInterpreter {
         return result;
     }
 
+    /* Given a table a, return its column names as an Arraylist */
     ArrayList<String> getAllCol(Table t) {
         ArrayList<String> result = new ArrayList<String>();
         for (int i = 0; i < t.columns(); i++) {

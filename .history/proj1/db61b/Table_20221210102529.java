@@ -182,45 +182,6 @@ class Table implements Iterable<Row> {
         }
     }
 
-    /** Return a list which contains a column of the table. */
-    ArrayList<String> selectcolumn(String columnName) {
-        ArrayList<String> result = new ArrayList<String>();
-        ArrayList<Column> newColumn = new ArrayList<Column>();
-        int columnnumber = this.findColumn(columnName);
-        newColumn.add(new Column(columnName , this));
-        for (Row r : _rows) {
-            result.add(r.get(columnnumber));
-        }
-        return result;
-    }
-
-    /** Reorder the sequence of rows in a table. */
-    Table sort(ArrayList<String> order, String columnName) {
-        ArrayList<String> columnNames = new ArrayList<String>();
-        for (int i = 0; i < this.columns(); i++) {
-            columnNames.add(this.getTitle(i));
-        }
-        Table result = new Table(columnNames);
-        ArrayList<Integer> memory = new ArrayList<Integer>();
-        ArrayList<Column> newColumns = new ArrayList<Column>();
-        int columnnumber = this.findColumn(columnName);
-        for (String c : columnNames) {
-            newColumns.add(new Column(c, this));
-        }
-        for (int i = 0; i < order.size(); i++) {
-            int count = 0;
-            for (Row r : _rows) {
-                if ((order.get(i) == r.get(columnnumber) && (!memory.contains(count)))) {
-                    result.add(new Row(newColumns, r));
-                    memory.add(count);
-                    break;
-                }
-                count++;
-            }
-        }
-        return result;
-    }
-
     /** Return a new Table whose columns are COLUMNNAMES, selected from
      *  rows of this table that satisfy CONDITIONS. */
     Table select(List<String> columnNames, List<Condition> conditions, String operations) {
@@ -324,8 +285,7 @@ class Table implements Iterable<Row> {
     }
 
     /** My rows. */
-    // private HashSet<Row> _rows = new HashSet<>();
-    private ArrayList<Row> _rows = new ArrayList<>();
+    private HashSet<Row> _rows = new HashSet<>();
     // FILL IN
     /** My titles */
     private String table_titles[];

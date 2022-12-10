@@ -11,7 +11,6 @@ package db61b;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Collections;
 
 import static db61b.Utils.*;
 import static db61b.Tokenizer.*;
@@ -231,47 +230,9 @@ class CommandInterpreter {
     /** Parse and execute a select statement from the token stream. */
     void selectStatement() {
         Table table = selectClause();
-        ArrayList<String> columnNames = new ArrayList<String>();
-        if (_input.nextIf("order")) {
-            _input.next("by");
-            columnNames.add(columnName());
-            while (_input.nextIf(",")) {
-                columnNames.add(columnName());
-            }
-            if (_input.nextIf("desc")) {
-                table = orderTable_desc(table, columnNames);
-            }
-            else if (_input.nextIf("asc")) {
-                table = orderTable_asc(table, columnNames);
-            }
-            else {
-                table = orderTable_asc(table, columnNames);
-            }
-        }
         System.out.println("Search results:");
         table.print();
         _input.next(";");
-    }
-
-    /* Reorder the table in ascending order. If two rows have the same value, 
-    it will keep the original sequence. */
-    Table orderTable_asc(Table table, ArrayList<String> columnNames) {
-        ArrayList<String> orderedlist = new ArrayList<String>();
-        orderedlist = table.selectcolumn(columnNames.get(0));
-        Collections.sort(orderedlist);
-        table = table.sort(orderedlist, columnNames.get(0));
-        return table;
-    }
-
-    /* Reorder the table in descending order. If two rows have the same value, 
-    it will keep the original sequence. */
-    Table orderTable_desc(Table table, ArrayList<String> columnNames) {
-        ArrayList<String> orderedlist = new ArrayList<String>();
-        orderedlist = table.selectcolumn(columnNames.get(0));
-        Collections.sort(orderedlist);
-        Collections.reverse(orderedlist);
-        table = table.sort(orderedlist, columnNames.get(0));
-        return table;
     }
 
     /** Parse and execute a table definition, returning the specified

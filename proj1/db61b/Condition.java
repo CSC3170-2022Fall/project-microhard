@@ -62,18 +62,14 @@ class Condition {
         //Complex case
         int n = conditions.size();
         if (n == 0) return true;
-        boolean conRes[] = new boolean[n];
-        for (int i = 0; i < n; i++){
-            conRes[i] = conditions.get(i).test(rows);
-        }
-        boolean result = conRes[0];
+        boolean result = conditions.get(0).test(rows);
         for (int i = 0; i < n-1; i++){
             if (operations.charAt(i) == '1'){
                 if (result) return true;
                 else result = true;
             }
             else{
-                result = result && conRes[i+1];
+                result = result && conditions.get(i+1).test(rows);
             }
         }
         return result;

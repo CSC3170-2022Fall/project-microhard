@@ -1,7 +1,7 @@
-SID,Lastname,Firstname,SemEnter,YearEnter,Major
-101,Knowles,Jason,F,2003,EECS
-102,Chan,Valerie,S,2003,Math
-103,Xavier,Jonathan,S,2004,LSUnd
-104,Armstrong,Thomas,F,2003,EECS
-105,Brown,Shana,S,2004,EECS
-106,Chan,Yangfan,F,2003,LSUnd
+SID,Lastname,Firstname,SemEnter,YearEnter,Major,Scholarship
+101,Knowles,Jason,F,2003,EECS,7000
+102,Chan,Valerie,S,2003,Math,10000
+103,Xavier,Jonathan,S,2004,LSUnd,8500
+104,Armstrong,Thomas,F,2003,EECS,6666
+105,Brown,Shana,S,2004,EECS,11250
+106,Chan,Yangfan,F,2003,LSUnd,9999

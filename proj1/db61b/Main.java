@@ -8,13 +8,13 @@ import java.util.Scanner;
 public class Main {
 
     /** Version designation for this program. */
-    private static final String VERSION = "2.3";
+    private static final String VERSION = "2.4";
 
     /** Starting with an empty database, read and execute commands from
      *  System.in until receiving a 'quit' ('exit') command or until
      *  reaching the end of input. */
     public static void main(String[] unused) {
-        System.out.printf("DB61B System.  Version %s.%n", VERSION);
+        System.out.printf("Microhard Database System.  Version %s.%n", VERSION);
 
         Scanner input = new Scanner(System.in);
         CommandInterpreter interpreter =

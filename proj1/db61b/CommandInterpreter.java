@@ -340,10 +340,17 @@ class CommandInterpreter {
         }
         /* Select by the specified column names*/
         else {
-            col.add(columnName());
+            // col.add(columnName());
+            col = select_aux(col);
             while (_input.nextIf(",")) {
-                col.add(columnName());
+                // col.add(columnName());
+                col = select_aux(col);
             }
+            
+            if (test_compatibility(col)) {
+                throw error("Aggregate function without Group By does not allow other columns to exist!");
+            }
+
             _input.next("from");
             /* Here we consider the general case */
             Table table1 = tableName();
@@ -363,14 +370,89 @@ class CommandInterpreter {
             joined_table = t1.select(t2, rm_dup(getAllCol(t1), getAllCol(t2)), con_aux);
             for (int i = 2; i < tab.size(); i++) {
                 joined_table = joined_table.select(tab.get(i), 
-                rm_dup(getAllCol(joined_table), getAllCol(tab.get(i))), con_aux);
+                    rm_dup(getAllCol(joined_table), getAllCol(tab.get(i))), con_aux);
             }
         }
         ConditionClause con = new ConditionClause();
         if (_input.nextIf("where")) {
             con = conditionClause(joined_table);
         }
-        return joined_table.select(col, con.conList, con.operations);
+
+        String aggregate = null;
+        if (col.size() == 1) {
+            aggregate = get_aggregate(col.get(0));
+        }
+        if (aggregate == null) {
+            // System.out.println("aggregate is null");
+            return joined_table.select(col, con.conList, con.operations);
+        } else { /* If not null, col must have only one item */
+            // System.out.println("aggregate is not null");
+            String agg_col = get_aggregate_col(col.get(0));
+            if (agg_col.equals("*") && aggregate.equals("count")) {
+                agg_col = joined_table.getTitle(0);
+            } else if (agg_col.equals("*") && !aggregate.equals("count")) {
+                throw error("Aggregate function imcompatible with attribute");
+            }
+            col.set(0, agg_col);
+            Table t = joined_table.select(col, con.conList, con.operations);
+            return t.aggregate_(aggregate);
+        }
+        // return null;
+        // return joined_table.select(col, con.conList, con.operations);
+    }
+
+    ArrayList<String> select_aux(ArrayList<String> col) {
+        String aggregate_func = null;
+        if (_input.nextIs("avg")) {
+            aggregate_func = "avg";
+        } else if (_input.nextIs("count")) {
+            aggregate_func = "count";
+        } else if (_input.nextIs("min")) {
+            aggregate_func = "min";
+        } else if (_input.nextIs("min")) {
+            aggregate_func = "min";
+        }
+        if (aggregate_func != null) {
+            _input.next(aggregate_func);
+            _input.next("(");
+            if (_input.nextIf("*")) {
+                col.add(aggregate_func + "(*)");
+            } else {
+                col.add(aggregate_func + "(" + columnName() + ")");
+            }
+            _input.next(")");
+        } else {
+            col.add(columnName());
+        }
+        return col;
+    }
+
+    /* So far we only support one aggregate function with no other columns
+     * Return true if not compatible. Then an error will be generated
+     */
+    Boolean test_compatibility (ArrayList<String> col) {
+        int flag = 0;
+        for (int i = 0; i < col.size(); i++) {
+            if (get_aggregate(col.get(i)) != null) {
+                flag = 1;
+                break;
+            }
+        }
+        return (col.size() > 1) && (flag == 1);
+    }
+
+    /* get the name of aggregate function */
+    String get_aggregate (String s) {
+        int i = s.indexOf("(");
+        if (i == -1) {
+            return null;
+        } else {
+            return s.substring(0, i);
+        }
+    }
+
+    String get_aggregate_col (String s) {
+        return s.substring(s.indexOf("(")+1, s.indexOf(")"));
     }
 
     /* Combine two array lists of String type, then remove any duplicated items in the list */

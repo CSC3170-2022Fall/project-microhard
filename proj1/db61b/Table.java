@@ -286,6 +286,53 @@ class Table implements Iterable<Row> {
         return result;
     }
 
+    /* Return the aggregate function result based on func type */
+    Table aggregate_(String func) {
+        Table t;
+        String result = null, colName;
+        // System.out.printf("test\n");
+        if (func.equals("avg")) {
+            // System.out.printf("test\n");
+            int sum = 0;
+            int cnt = 0;
+            for (Row r : _rows) {
+                int i = Integer.parseInt(r.get(0));
+                sum = sum + i;
+                cnt++;
+                // System.out.printf("%d\n", sum);
+            }
+            int res = sum/cnt;
+            // System.out.printf("%.1f\n", res);
+            result = Integer.toString(res);
+        } else if (func.equals("count")) {
+            int cnt = 0;
+            for (Row r : _rows) {
+                cnt++;
+            }
+            result = Integer.toString(cnt);
+        } else if (func.equals("min")) {
+            int min = Integer.MAX_VALUE;
+            for (Row r : _rows) {
+                int i = Integer.parseInt(r.get(0));
+                if (i < min) min = i;
+            }
+            result = Integer.toString(min);
+        } else if (func.equals("max")) {
+            int max = Integer.MIN_VALUE;
+            for (Row r : _rows) {
+                int i = Integer.parseInt(r.get(0));
+                if (i > max) max = i;
+            }
+            result = Integer.toString(max);
+        }
+        colName = func + "(" + this.getTitle(0) + ")";
+        String[] col = {colName};
+        String[] row = {result};
+        t = new Table(col); 
+        t.add(new Row(row));
+        return t;
+    }
+
     /** Return a new Table whose columns are COLUMNNAMES, selected from
      *  rows of this table that satisfy CONDITIONS. */
     Table select(List<String> columnNames, List<Condition> conditions, String operations) {

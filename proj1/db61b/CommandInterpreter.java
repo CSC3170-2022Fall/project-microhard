@@ -409,8 +409,8 @@ class CommandInterpreter {
             aggregate_func = "count";
         } else if (_input.nextIs("min")) {
             aggregate_func = "min";
-        } else if (_input.nextIs("min")) {
-            aggregate_func = "min";
+        } else if (_input.nextIs("max")) {
+            aggregate_func = "max";
         }
         if (aggregate_func != null) {
             _input.next(aggregate_func);

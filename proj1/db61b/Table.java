@@ -296,9 +296,13 @@ class Table implements Iterable<Row> {
             int sum = 0;
             int cnt = 0;
             for (Row r : _rows) {
-                int i = Integer.parseInt(r.get(0));
-                sum = sum + i;
-                cnt++;
+                try {
+                    int i = Integer.parseInt(r.get(0));
+                    sum = sum + i;
+                    cnt++;
+                } catch (Exception e) {
+                    throw error("There seem to be problems with the column. Try select another one!");
+                }
                 // System.out.printf("%d\n", sum);
             }
             int res = sum/cnt;
@@ -313,15 +317,23 @@ class Table implements Iterable<Row> {
         } else if (func.equals("min")) {
             int min = Integer.MAX_VALUE;
             for (Row r : _rows) {
-                int i = Integer.parseInt(r.get(0));
-                if (i < min) min = i;
+                try {
+                    int i = Integer.parseInt(r.get(0));
+                    if (i < min) min = i;
+                } catch (Exception e) {
+                    throw error("There seem to be problems with the column. Try select another one!");
+                }
             }
             result = Integer.toString(min);
         } else if (func.equals("max")) {
             int max = Integer.MIN_VALUE;
             for (Row r : _rows) {
-                int i = Integer.parseInt(r.get(0));
-                if (i > max) max = i;
+                try {
+                    int i = Integer.parseInt(r.get(0));
+                    if (i > max) max = i;
+                } catch (Exception e) {
+                    throw error("There seem to be problems with the column. Try select another one!");
+                }
             }
             result = Integer.toString(max);
         }

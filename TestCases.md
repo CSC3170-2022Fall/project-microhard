@@ -63,21 +63,21 @@ from students, enrolled, schedule
 where Year = '2003' and Grade = 'B';
 ```
 
-### Test 7: *order by one column*
+### Test 8: *order by one column*
 ```
 select SID, Firstname, Grade
 from students, enrolled
 order by Grade;
 ```
 
-### Test 8: *order by multiple columns*
+### Test 9: *order by multiple columns*
 ```
 select SID, Fistname, Grade
 from students, enrolled
 order by SID, Firstname desc;
 ```
 
-### Test 9: *condition or & and*
+### Test 10: *condition or & and*
 ```
 select SID, Fistname, Grade
 from students, enrolled, schedule

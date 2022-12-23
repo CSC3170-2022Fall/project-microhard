@@ -72,7 +72,7 @@ In *testing* folder, there are database files `blank.db`, `enrolled.db`, `schedu
 1. Case-Insensitive to User’s Input
 2. Multiple-Relations Joint
 3. Select All: Users can use `select *` to see all the data from the table. A `for` loop is used to get all the column names of the table. Then, normal `select` by the total names is executed.
-4. Condition “OR”
+4. Condition “OR”: We supply conditions with a mixture of `and` operation and `or` operation.
 5. Results “Order by”: Users can reorder the result table in ascending/descending order based on the value(s) of one or more columns, in which `asc` or none for 'ascending' and `desc` for 'descending'. More details can be found in `selectStatement` method, `CommandInterpreter.java` file.
 6. Multi-Load
 

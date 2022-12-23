@@ -7,11 +7,24 @@ For those who have made an effort to develop the enhanced part, please fill in s
 ***
 ## UCB Basic Tests
 
-### Test 1: *load*
+### Test 1: *load* and *print*
 ```
 load students;
 load enrolled;
 load schedule;
+
+print schedule;
+
+==========result===========
+Contents of schedule:
+  21228 61A EECS 2-3MWF 1 Pimentel F 2003      
+  21231 61A EECS 1-2MWF 1 Pimentel S 2004      
+  21229 61B EECS 11-12MWF 155 Dwinelle F 2003  
+  21232 61B EECS 1-2MWF 2050 VLSB S 2004       
+  21103 54 Math 1-2MWF 2050 VLSB F 2003        
+  21105 54 Math 1-2MWF 1 Pimentel S 2004       
+  21001 1A English 9-10MWF 2301 Tolman F 2003  
+  21005 1A English 230-5TuTh 130 Wheeler S 2004
 ```
 ### Test 2: *basic select from where*
 ```
@@ -19,12 +32,24 @@ load schedule;
 select SID, Firstname 
 from students
 where Lastname = ’Chan’;
+
+==========result===========
+Search results:
+  102 Valerie
+  106 Yangfan
 ```
 ### Test 3: *select from two tables*
 ```
 select Firstname, Lastname, Grade
 from students, enrolled 
 where CCN = ’21001’;
+
+==========result===========
+Search results:
+  Jason Knowles B
+  Valerie Chan B+
+  Shana Brown B+
+  Yangfan Chan B
 ```
 ### Test 4: *create table*
 ```
@@ -37,6 +62,21 @@ print enrolled2;
 /*Select from created table*/
 select Firstname, Lastname 
 from students, enrolled2;
+
+==========result===========
+Contents of enrolled2:
+  101
+  102
+  104
+  105
+  106
+  
+Search results:
+  Jason Knowles
+  Valerie Chan
+  Thomas Armstrong
+  Shana Brown
+  Yangfan Chan
 ```
 
 ***
@@ -46,7 +86,13 @@ from students, enrolled2;
 ```
 SELecT SID, Firstname
 FROm students
-whERE SID > "103";
+whERE SID > '103';
+
+==========result===========
+Search results:
+  104 Thomas
+  105 Shana
+  106 Yangfan
 ```
 
 ### Test 6: *select from multiple tables*
@@ -54,6 +100,19 @@ whERE SID > "103";
 select SID, Grade, Year
 from students, enrolled, schedule
 where Year = '2003';
+
+==========result===========
+Search results:
+  101 B 2003
+  101 B 2003
+  102 A 2003
+  102 B+ 2003
+  104 A- 2003
+  104 B+ 2003
+  105 A 2003
+  105 B+ 2003
+  106 A 2003
+  106 B 2003
 ```
 
 ### Test 7: *select all*
@@ -61,6 +120,12 @@ where Year = '2003';
 select *
 from students, enrolled, schedule
 where Year = '2003' and Grade = 'B';
+
+==========result===========
+Search results:
+  101 Knowles Jason F 2003 EECS 7000 21228 B 61A EECS 2-3MWF 1 Pimentel F 2003
+  101 Knowles Jason F 2003 EECS 7000 21001 B 1A English 9-10MWF 2301 Tolman F 2003
+  106 Chan Yangfan F 2003 LSUnd 9999 21001 B 1A English 9-10MWF 2301 Tolman F 2003
 ```
 
 ### Test 8: *order by one column*
@@ -90,7 +155,17 @@ where Dept = 'EECS' and Year = '2003' or SID = '103';
 select avg(Scholarship)
 from students
 where YearEnter = '2003';
+
+select SID, avg(Scholarship) from students;
+
 /*count*/
 select count(*)
 from students;
+
+/*min*/
+select min(SID) from students;
+select min(Lastname) from students;
+
+/*max*/
+select max(SID) from students;
 ```

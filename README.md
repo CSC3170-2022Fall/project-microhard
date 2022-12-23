@@ -17,17 +17,17 @@ Our team consists of the following members, listed in the table below (the team 
 
 <!-- change the info below to be the real case -->
 
-| Student ID | Student Name | GitHub Account (in Email)  | GitHub Username |
-| ---------- | ------------ | -------------------------- | ---------- |
-| 120090609  | 刘恒睿 🚩    | 120090609@link.cuhk.edu.cn | [RichardRui9](https://github.com/RichardRui9) |
-| 120090860  | 李楠轩       | 120090860@link.cuhk.edu.cn | [George-Mac](https://github.com/George-Mac) |
-| 120090495  | 张家荣       | 120090495@link.cuhk.edu.cn | [Yae-mikooo](https://github.com/Yae-mikooo) |
-| 119010269  | 宋泽方       | 119010269@link.cuhk.edu.cn | [Song199010](https://github.com/Song199010) |
-| 120090565  | 胡文涵       | 120090565@link.cuhk.edu.cn | [Clarice927](https://github.com/Clarice927) |
-| 119010216  | 路东竹渊     | 119010216@link.cuhk.edu.cn | [Tim-Lu-cuhksz](https://github.com/Tim-Lu-cuhksz) |
-| 120090771  | 邱纬纶       | 120090771@link.cuhk.edu.cn | [alanqwl](https://github.com/alanqwl) |
-| 120090224  | 杨尚霖       | 120090224@link.cuhk.edu.cn | [UnitedSnakes](https://github.com/CSC3170-2022Fall/project-microhard/commits?author=UnitedSnakes) |
-| 120090470  | 李鹏         | 120090470@link.cuhk.edu.cn | [pengleee](https://github.com/pengleee) |
+| Student ID | Student Name | GitHub Account (in Email)  | GitHub Username | Actual Contribution |
+| ---------- | ------------ | -------------------------- | ---------- | ------------ |
+| 120090609  | 刘恒睿 🚩    | 120090609@link.cuhk.edu.cn | [RichardRui9](https://github.com/RichardRui9) |*fill in the blank* |
+| 120090860  | 李楠轩       | 120090860@link.cuhk.edu.cn | [George-Mac](https://github.com/George-Mac) |*fill in the blank* |
+| 120090495  | 张家荣       | 120090495@link.cuhk.edu.cn | [Yae-mikooo](https://github.com/Yae-mikooo) | *fill in the blank*|
+| 119010269  | 宋泽方       | 119010269@link.cuhk.edu.cn | [Song199010](https://github.com/Song199010) | *fill in the blank*|
+| 120090565  | 胡文涵       | 120090565@link.cuhk.edu.cn | [Clarice927](https://github.com/Clarice927) | *fill in the blank*|
+| 119010216  | 路东竹渊     | 119010216@link.cuhk.edu.cn | [Tim-Lu-cuhksz](https://github.com/Tim-Lu-cuhksz) |*fill in the blank*|
+| 120090771  | 邱纬纶       | 120090771@link.cuhk.edu.cn | [alanqwl](https://github.com/alanqwl) | *fill in the blank*|
+| 120090224  | 杨尚霖       | 120090224@link.cuhk.edu.cn | [UnitedSnakes](https://github.com/CSC3170-2022Fall/project-microhard/commits?author=UnitedSnakes) | *fill in the blank*|
+| 120090470  | 李鹏         | 120090470@link.cuhk.edu.cn | [pengleee](https://github.com/pengleee) | *fill in the blank*|
 
 ## Project Specification
 
@@ -52,5 +52,29 @@ Microhard then decides to add to the query language more syntaxes like "group by
 Please do not hesitate to contact us if we can be of assistance.
 
 Microhard
-
 December 05, 2022
+
+## Program Design
+The project mainly consists of 7 Java files: `CommandInterpreter.java`, `Tokenizer.java`, `Database.java`, `Table.java`, `Row.java`, `Condition.java` and `Column.java`.
+
+`CommandInterpreter.java` uses `Tokenizer.java` to parse user commands, and passes appropriate tests. `Tokenizer.java` interacts with database or creates conditions. `Database.java` is the container for tables. `Table.java` is the brains of the project. It writes and reads from files, and also performs db operations when given commands by `CommandIntepreter.java`. `Condition.java` represents a where condition command in a select clause. `Row.java` represents a single row of data. `Column.java` acts as an index of a column in a list of rows. Besides, there are `Utils.java`, `DBException.java`, `Main.java` in the project. 
+
+In *testing* folder, there are database files `blank.db`, `enrolled.db`, `schedule.db` and `students.db`. Tester Python files and sample input/output are also included. 
+
+## Functionality Implementation
+### Basic Functions
+1. Load table from .db: It uses the `readTable()` method in `Table.java` to read the contents of db file and return as a table.
+2. Omit comments in expressions
+3. Basic *select from ... where* operation
+4. Create table from select clause
+5. Join two tables
+### Enhanced Functions
+1. Case-Insensitive to User’s Input
+2. Multiple-Relations Joint
+3. Select All: Users can use `select *` to see all the data from the table. A `for` loop is used to get all the column names of the table. Then, normal `select` by the total names is executed.
+4. Condition “OR”
+5. Results “Order by”
+6. Multi-Load
+
+## Difficulty Encountered & Solutions
+*fill in the blank fill in the blank fill in the blank fill in the blank*

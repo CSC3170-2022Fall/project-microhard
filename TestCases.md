@@ -128,18 +128,62 @@ Search results:
   106 Chan Yangfan F 2003 LSUnd 9999 21001 B 1A English 9-10MWF 2301 Tolman F 2003
 ```
 
-### Test 8: *order by one column*
+### Test 8: *order by one column (ascending order)*
 ```
-select SID, Firstname, Grade
+select SID, Firstname, Lastname, Grade
 from students, enrolled
-order by Grade;
+order by Lastname;
+
+==========result===========
+Search results:
+  104 Thomas Armstrong A-
+  104 Thomas Armstrong B+
+  104 Thomas Armstrong A-
+  104 Thomas Armstrong A-
+  105 Shana Brown A
+  105 Shana Brown B+
+  102 Valerie Chan A
+  102 Valerie Chan A-
+  102 Valerie Chan A
+  102 Valerie Chan B+
+  106 Yangfan Chan A
+  106 Yangfan Chan B
+  106 Yangfan Chan A
+  101 Jason Knowles B
+  101 Jason Knowles B+
+  101 Jason Knowles A-
+  101 Jason Knowles B
+  103 Jonathan Xavier B+
+  103 Jonathan Xavier B+
 ```
 
-### Test 9: *order by multiple columns*
+### Test 9: *order by multiple columns (descending order)*
 ```
 select SID, Fistname, Grade
 from students, enrolled
 order by SID, Firstname desc;
+
+==========result===========
+Search results:
+  106 Yangfan A
+  106 Yangfan B
+  106 Yangfan A
+  105 Shana A
+  105 Shana B+
+  104 Thomas A-
+  104 Thomas B+
+  104 Thomas A-
+  104 Thomas A-
+  103 Jonathan B+
+  103 Jonathan B+
+  102 Valerie A
+  102 Valerie A-
+  102 Valerie A
+  102 Valerie B+
+  101 Jason B
+  101 Jason B+
+  101 Jason A-
+  101 Jason B
 ```
 
 ### Test 10: *condition or & and*
@@ -147,6 +191,16 @@ order by SID, Firstname desc;
 select SID, Fistname, Grade
 from students, enrolled, schedule
 where Dept = 'EECS' and Year = '2003' or SID = '103';
+
+==========result===========
+Search results:
+  101 Jason B
+  102 Valerie A
+  103 Jonathan B+
+  103 Jonathan B+
+  104 Thomas A-
+  104 Thomas B+
+  105 Shana A
 ```
 
 ### Test 11: *aggregate function*
@@ -167,5 +221,22 @@ select min(SID) from students;
 select min(Lastname) from students;
 
 /*max*/
-select max(SID) from students;
+select max(Scholarship) from students;
+
+==========result===========
+Search results:
+  8416
+
+Error: Aggregate function without Group By does not allow other columns to exist!
+
+Search results:
+  6
+
+Search results:
+  101
+  
+Error: There seem to be problems with the column. Try select another one!
+
+Search results:
+  11250
 ```

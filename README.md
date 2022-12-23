@@ -76,5 +76,6 @@ In *testing* folder, there are database files `blank.db`, `enrolled.db`, `schedu
 5. Results “Order by”
 6. Multi-Load
 
+Please visit documentation [here](TestCases.md) for more test details.
 ## Difficulty Encountered & Solutions
 *fill in the blank fill in the blank fill in the blank fill in the blank*

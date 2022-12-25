@@ -20,7 +20,7 @@ Our team consists of the following members, listed in the table below (the team 
 | Student ID | Student Name | GitHub Account (in Email)  | GitHub Username | Actual Contribution |
 | ---------- | ------------ | -------------------------- | ---------- | ------------ |
 | 120090609  | 刘恒睿 🚩    | 120090609@link.cuhk.edu.cn | [RichardRui9](https://github.com/RichardRui9) |*fill in the blank* |
-| 120090860  | 李楠轩       | 120090860@link.cuhk.edu.cn | [George-Mac](https://github.com/George-Mac) |*fill in the blank* |
+| 120090860  | 李楠轩       | 120090860@link.cuhk.edu.cn | [George-Mac](https://github.com/George-Mac) |Basic: Help completing Table. <br />Enhanced: Case-Insensitive. <br />Presentation: Make <br />first part of PPT <br />and give a presentation of that part. |
 | 120090495  | 张家荣       | 120090495@link.cuhk.edu.cn | [Yae-mikooo](https://github.com/Yae-mikooo) | *fill in the blank*|
 | 119010269  | 宋泽方       | 119010269@link.cuhk.edu.cn | [Song199010](https://github.com/Song199010) | *fill in the blank*|
 | 120090565  | 胡文涵       | 120090565@link.cuhk.edu.cn | [Clarice927](https://github.com/Clarice927) | *fill in the blank*|
@@ -79,3 +79,10 @@ In *testing* folder, there are database files `blank.db`, `enrolled.db`, `schedu
 Please visit documentation [here](TestCases.md) for more test details.
 ## Difficulty Encountered & Solutions
 *fill in the blank fill in the blank fill in the blank fill in the blank*
+
+
+
+## Presentation Video Link
+
+https://cuhko365-my.sharepoint.com/personal/120090609_link_cuhk_edu_cn/_layouts/15/stream.aspx?id=%2Fpersonal%2F120090609%5Flink%5Fcuhk%5Fedu%5Fcn%2FDocuments%2F%E9%99%84%E4%BB%B6%2F3170pre%2Emp4&wdLOR=c5147A277%2D8F05%2DAE4F%2DBBA9%2D2A96F8E81232&ga=1
+

@@ -21,10 +21,10 @@ Our team consists of the following members, listed in the table below (the team 
 | ---------- | ------------ | -------------------------- | ---------- | ------------ |
 | 120090609  | 刘恒睿 🚩    | 120090609@link.cuhk.edu.cn | [RichardRui9](https://github.com/RichardRui9) |*fill in the blank* |
 | 120090860  | 李楠轩       | 120090860@link.cuhk.edu.cn | [George-Mac](https://github.com/George-Mac) |Basic: Help completing Table. <br />Enhanced: Case-Insensitive. <br />Presentation: Make <br />first part of PPT <br />and give a presentation of that part. |
-| 120090495  | 张家荣       | 120090495@link.cuhk.edu.cn | [Yae-mikooo](https://github.com/Yae-mikooo) |Basic: Implement `selectStatement`, `selectClause` in `CommandInterpreter.java` <br />Enhanced: Multi-relation Join & Aggregate Functions <br />Presentation: Present the seond part|
+| 120090495  | 张家荣       | 120090495@link.cuhk.edu.cn | [Yae-mikooo](https://github.com/Yae-mikooo) | *fill in the blank*|
 | 119010269  | 宋泽方       | 119010269@link.cuhk.edu.cn | [Song199010](https://github.com/Song199010) | *fill in the blank*|
 | 120090565  | 胡文涵       | 120090565@link.cuhk.edu.cn | [Clarice927](https://github.com/Clarice927) | *fill in the blank*|
-| 119010216  | 路东竹渊     | 119010216@link.cuhk.edu.cn | [Tim-Lu-cuhksz](https://github.com/Tim-Lu-cuhksz) |*fill in the blank*|
+| 119010216  | 路东竹渊     | 119010216@link.cuhk.edu.cn | [Tim-Lu-cuhksz](https://github.com/Tim-Lu-cuhksz) |Basic: Implement `selectStatement`, `selectClause` in `CommandInterpreter.java` <br />Enhanced: Multi-relation Join & Aggregate Functions <br />Presentation: Present the seond part|
 | 120090771  | 邱纬纶       | 120090771@link.cuhk.edu.cn | [alanqwl](https://github.com/alanqwl) | *fill in the blank*|
 | 120090224  | 杨尚霖       | 120090224@link.cuhk.edu.cn | [UnitedSnakes](https://github.com/CSC3170-2022Fall/project-microhard/commits?author=UnitedSnakes) | *fill in the blank*|
 | 120090470  | 李鹏         | 120090470@link.cuhk.edu.cn | [pengleee](https://github.com/pengleee) | *fill in the blank*|

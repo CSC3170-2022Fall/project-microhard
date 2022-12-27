@@ -11,5 +11,8 @@
         "SPTF",
         "Stackoverflow",
         "unitization"
+    ],
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
     ]
 }

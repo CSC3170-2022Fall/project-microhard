@@ -198,15 +198,34 @@ class CommandInterpreter {
         _input.next(";");
     }
 
-    /** Parse and execute a load statement from the token stream. */
+/* Parse and execute a load statement from the token stream. */
     void loadStatement() {
         _input.next("load");
         String name = name();
+        ArrayList<String> loadlst = new ArrayList<String>();
+        while (_input.nextIf(",")){
+                loadlst.add(name());
+            }
+        // _input.next(";");
         Table content = Table.readTable(name);
+        // System.out.printf("Loaded %s.db%n", name);
         _database.put(name, content);
-        _input.next(";");
         System.out.printf("Loaded %s.db%n", name);
+        while (!(loadlst.isEmpty())){
+            Table content1 = Table.readTable(loadlst.get(0));
+            _database.put(loadlst.get(0), content1);
+            System.out.printf("Loaded %s.db%n", loadlst.get(0));
+            loadlst.remove(0);
+            // }
+        }
+        _input.next(";");
+        loadlst.clear();
+        // _input.next(";");
+        // Table content = Table.readTable(name);
+        // _database.put(name, content);
+        // System.out.printf("Loaded %s.db%n", name);
     }
+
 
     /** Parse and execute a store statement from the token stream. */
     void storeStatement() {

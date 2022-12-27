@@ -84,5 +84,4 @@ Please visit documentation [here](TestCases.md) for more test details.
 
 ## Presentation Video Link
 
-https://cuhko365-my.sharepoint.com/personal/120090609_link_cuhk_edu_cn/_layouts/15/stream.aspx?id=%2Fpersonal%2F120090609%5Flink%5Fcuhk%5Fedu%5Fcn%2FDocuments%2F%E9%99%84%E4%BB%B6%2F3170pre%2Emp4&wdLOR=c5147A277%2D8F05%2DAE4F%2DBBA9%2D2A96F8E81232&ga=1
-
+https://cuhko365-my.sharepoint.com/:v:/g/personal/120090609_link_cuhk_edu_cn/Ed3DS1e8eoVPqPzizAdmyNQBEqQWCmFjDLqoRN7TOhw2nw?e=cVpTYw

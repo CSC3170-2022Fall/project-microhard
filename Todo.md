@@ -8,11 +8,11 @@
 - [x] **Realized *WHERE* Clause**
 - [x] **Realized *FROM* Clause for more than two tables**
 - [X] **Realizing *SELECT \** (select all) command**
+- [X] **Realizing *ORDER BY* Clause**
+- [X] **Realizing *Aggregate Function* including *avg*, *min*, *max*, *count***
 
 ## Functions in Process
 
 - [ ] **Realizing *GROUP BY* Clause**
-- [ ] **Realizing *ORDER BY* Clause**
 - [ ] **Optimizing the error processing**
 - [ ] **Optimizing the speed/efficiency of data handling**
-- [ ] **Realizing *Aggregate Function* including *avg*, *min*, *max*, *count*, etc**

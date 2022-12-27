@@ -161,29 +161,14 @@ Search results:
 ```
 select SID, Fistname, Grade
 from students, enrolled
+where SID > '103' and Grade = 'A'
 order by SID, Firstname desc;
 
 ==========result===========
 Search results:
   106 Yangfan A
-  106 Yangfan B
   106 Yangfan A
   105 Shana A
-  105 Shana B+
-  104 Thomas A-
-  104 Thomas B+
-  104 Thomas A-
-  104 Thomas A-
-  103 Jonathan B+
-  103 Jonathan B+
-  102 Valerie A
-  102 Valerie A-
-  102 Valerie A
-  102 Valerie B+
-  101 Jason B
-  101 Jason B+
-  101 Jason A-
-  101 Jason B
 ```
 
 ### Test 10: *condition or & and*

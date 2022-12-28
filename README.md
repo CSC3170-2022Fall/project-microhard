@@ -129,4 +129,4 @@ The combination of aggregate functions and "group by" syntax is powerful. We imp
 
 ## Presentation Video Link
 
-Please refer to videolink.txt.
+Please refer to [video link](https://cuhko365-my.sharepoint.com/:v:/g/personal/120090609_link_cuhk_edu_cn/Ed3DS1e8eoVPqPzizAdmyNQBEqQWCmFjDLqoRN7TOhw2nw?e=cVpTYw).

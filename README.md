@@ -35,6 +35,19 @@ After thorough discussion, our team made the choice and the specification inform
 
 - Our option choice is: **Option 3**
 
+## How to run our program
+
+### Use Makefile
+
+1. Go to the file Table.java and change the read path![1](https://github.com/CSC3170-2022Fall/project-microhard/blob/main/Image/1.png)
+2. Enter "cd proj1" in the terminal
+3. Enter "make check" in the terminal![2](https://github.com/CSC3170-2022Fall/project-microhard/blob/main/Image/2.png)
+
+### Run Main.java
+
+1. Go to the file Table.java and change the read path![3](https://github.com/CSC3170-2022Fall/project-microhard/blob/main/Image/3.png)
+2. Run the main.java file
+
 ## Project Abstract
 
 <!-- TODO -->

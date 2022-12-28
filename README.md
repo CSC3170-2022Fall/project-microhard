@@ -41,13 +41,13 @@ After thorough discussion, our team made the choice and the specification inform
 
 ### Use Makefile
 
-1. Go to the file Table.java and change the read path![截屏2022-12-28 下午10.44.53](/Users/linanxuan/Library/Application Support/typora-user-images/截屏2022-12-28 下午10.44.53.png)
+1. Go to the file Table.java and change the read path![1](https://github.com/CSC3170-2022Fall/project-microhard/blob/main/Image/1.png)
 2. Enter "cd proj1" in the terminal
-3. Enter "make check" in the terminal![截屏2022-12-28 下午10.46.59](/Users/linanxuan/Library/Application Support/typora-user-images/截屏2022-12-28 下午10.46.59.png)
+3. Enter "make check" in the terminal![2](https://github.com/CSC3170-2022Fall/project-microhard/blob/main/Image/2.png)
 
 ### Run Main.java
 
-1. Go to the file Table.java and change the read path![截屏2022-12-28 下午10.46.19](/Users/linanxuan/Library/Application Support/typora-user-images/截屏2022-12-28 下午10.46.19.png)
+1. Go to the file Table.java and change the read path![3](https://github.com/CSC3170-2022Fall/project-microhard/blob/main/Image/3.png)
 2. Run the main.java file
 
 ## Project Abstract

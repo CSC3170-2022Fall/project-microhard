@@ -37,6 +37,19 @@ After thorough discussion, our team made the choice and the specification inform
 
 - Our option choice is: **Option 3**
 
+## How to run our program
+
+### Use Makefile
+
+1. Go to the file Table.java and change the read path![截屏2022-12-28 下午10.44.53](/Users/linanxuan/Library/Application Support/typora-user-images/截屏2022-12-28 下午10.44.53.png)
+2. Enter "cd proj1" in the terminal
+3. Enter "make check" in the terminal![截屏2022-12-28 下午10.46.59](/Users/linanxuan/Library/Application Support/typora-user-images/截屏2022-12-28 下午10.46.59.png)
+
+### Run Main.java
+
+1. Go to the file Table.java and change the read path![截屏2022-12-28 下午10.46.19](/Users/linanxuan/Library/Application Support/typora-user-images/截屏2022-12-28 下午10.46.19.png)
+2. Run the main.java file
+
 ## Project Abstract
 
 <!-- TODO -->

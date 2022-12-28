@@ -1,5 +1,3 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=9434865&assignment_repo_type=AssignmentRepo)
-
 # CSC3170 Course Project
 
 ## Project Overall Description
@@ -17,17 +15,17 @@ Our team consists of the following members, listed in the table below (the team 
 
 <!-- change the info below to be the real case -->
 
-| Student ID | Student Name | GitHub Account (in Email)  | GitHub Username | Actual Contribution |
-| ---------- | ------------ | -------------------------- | ---------- | ------------ |
-| 120090609  | 刘恒睿 🚩    | 120090609@link.cuhk.edu.cn | [RichardRui9](https://github.com/RichardRui9) |*fill in the blank* |
-| 120090860  | 李楠轩       | 120090860@link.cuhk.edu.cn | [George-Mac](https://github.com/George-Mac) |Basic: Help completing Table. <br />Enhanced: Case-Insensitive. <br />Presentation: Make <br />first part of PPT <br />and give a presentation of that part. |
-| 120090495  | 张家荣       | 120090495@link.cuhk.edu.cn | [Yae-mikooo](https://github.com/Yae-mikooo) | *fill in the blank*|
-| 119010269  | 宋泽方       | 119010269@link.cuhk.edu.cn | [Song199010](https://github.com/Song199010) | *fill in the blank*|
-| 120090565  | 胡文涵       | 120090565@link.cuhk.edu.cn | [Clarice927](https://github.com/Clarice927) | *fill in the blank*|
-| 119010216  | 路东竹渊     | 119010216@link.cuhk.edu.cn | [Tim-Lu-cuhksz](https://github.com/Tim-Lu-cuhksz) |Basic: Implement `selectStatement`, `selectClause` in `CommandInterpreter.java` <br />Enhanced: Multi-relation Join & Aggregate Functions <br />Presentation: Present the seond part|
-| 120090771  | 邱纬纶       | 120090771@link.cuhk.edu.cn | [alanqwl](https://github.com/alanqwl) | *fill in the blank*|
-| 120090224  | 杨尚霖       | 120090224@link.cuhk.edu.cn | [UnitedSnakes](https://github.com/CSC3170-2022Fall/project-microhard/commits?author=UnitedSnakes) | *fill in the blank*|
-| 120090470  | 李鹏         | 120090470@link.cuhk.edu.cn | [pengleee](https://github.com/pengleee) | *fill in the blank*|
+| Student ID | Student Name | GitHub Account (in Email)  | GitHub Username                                                                                | Actual Contribution                                                                                                                                                                        |
+| ---------- | ------------ | -------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 120090609  | 刘恒睿 🚩    | 120090609@link.cuhk.edu.cn | [RichardRui9](https://github.com/RichardRui9)                                                     | *fill in the blank*                                                                                                                                                                      |
+| 120090860  | 李楠轩       | 120090860@link.cuhk.edu.cn | [George-Mac](https://github.com/George-Mac)                                                       | Basic: Help completing Table.<br />Enhanced: Case-Insensitive. <br />Presentation: Make <br />first part of PPT <br />and give a presentation of that part.                                |
+| 120090495  | 张家荣       | 120090495@link.cuhk.edu.cn | [Yae-mikooo](https://github.com/Yae-mikooo)                                                       | *fill in the blank*                                                                                                                                                                      |
+| 119010269  | 宋泽方       | 119010269@link.cuhk.edu.cn | [Song199010](https://github.com/Song199010)                                                       | *fill in the blank*                                                                                                                                                                      |
+| 120090565  | 胡文涵       | 120090565@link.cuhk.edu.cn | [Clarice927](https://github.com/Clarice927)                                                       | *fill in the blank*                                                                                                                                                                      |
+| 119010216  | 路东竹渊     | 119010216@link.cuhk.edu.cn | [Tim-Lu-cuhksz](https://github.com/Tim-Lu-cuhksz)                                                 | Basic: Implement `selectStatement`, `selectClause` in `CommandInterpreter.java` <br />Enhanced: Multi-relation Join & Aggregate Functions <br />Presentation: Present the seond part |
+| 120090771  | 邱纬纶       | 120090771@link.cuhk.edu.cn | [alanqwl](https://github.com/alanqwl)                                                             | *fill in the blank*                                                                                                                                                                      |
+| 120090224  | 杨尚霖       | 120090224@link.cuhk.edu.cn | [UnitedSnakes](https://github.com/CSC3170-2022Fall/project-microhard/commits?author=UnitedSnakes) | *fill in the blank*                                                                                                                                                                      |
+| 120090470  | 李鹏         | 120090470@link.cuhk.edu.cn | [pengleee](https://github.com/pengleee)                                                           | *fill in the blank*                                                                                                                                                                      |
 
 ## Project Specification
 
@@ -47,7 +45,7 @@ This CSC3170 project, based on a design from UCB CS61B, Fall 2014, requires our 
 
 The prototype Java codes provided by UCB have initiated a skeleton for DBMS and the first step for Microhard is to fill in the missing Java codes in five prototype Java files. As of December 05, Microhard has finished this job and successfully implemented the miniature DBMS. This DBMS reads query language tokens from terminal input and then invokes appropriate Java functions to perform specific operations.
 
-Microhard then decides to add to the query language more syntaxes like "group by" (for more details please refer to Todo.md) and optimize the speed and efficiency of the DBMS. These updates will be released soon.
+Microhard then decides to add to the query language more syntaxes like aggregate functions (for more details please refer to Todo.md) and optimize the speed and efficiency of the DBMS. These updates will be released soon.
 
 Please do not hesitate to contact us if we can be of assistance.
 
@@ -55,21 +53,26 @@ Microhard
 December 05, 2022
 
 ## Program Design
+
 The project mainly consists of 7 Java files: `CommandInterpreter.java`, `Tokenizer.java`, `Database.java`, `Table.java`, `Row.java`, `Condition.java` and `Column.java`.
 
-`CommandInterpreter.java` uses `Tokenizer.java` to parse user commands, and passes appropriate tests. `Tokenizer.java` interacts with database or creates conditions. `Database.java` is the container for tables. `Table.java` is the brains of the project. It writes and reads from files, and also performs db operations when given commands by `CommandIntepreter.java`. `Condition.java` represents a where condition command in a select clause. `Row.java` represents a single row of data. `Column.java` acts as an index of a column in a list of rows. Besides, there are `Utils.java`, `DBException.java`, `Main.java` in the project. 
+`CommandInterpreter.java` uses `Tokenizer.java` to parse user commands, and passes appropriate tests. `Tokenizer.java` interacts with database or creates conditions. `Database.java` is the container for tables. `Table.java` is the brains of the project. It writes and reads from files, and also performs db operations when given commands by `CommandIntepreter.java`. `Condition.java` represents a where condition command in a select clause. `Row.java` represents a single row of data. `Column.java` acts as an index of a column in a list of rows. Besides, there are `Utils.java`, `DBException.java`, `Main.java` in the project.
 
-In *testing* folder, there are database files `blank.db`, `enrolled.db`, `schedule.db` and `students.db`. Tester Python files and sample input/output are also included. 
+In *testing* folder, there are database files `blank.db`, `enrolled.db`, `schedule.db` and `students.db`. Tester Python files and sample input/output are also included.
 
 ## Functionality Implementation
+
 ### Basic Functions
+
 1. Load table from .db: It uses the `readTable()` method in `Table.java` to read the contents of db file and return as a table.
 2. Omit comments in expressions
 3. Basic *select from ... where* operation
 4. Create table from select clause
 5. Join two tables
+
 ### Enhanced Functions
-1. Case-Insensitive to User’s Input
+
+1. Case-Insensitive to User's Input
 2. Multiple-Relations Joint: Users can specify more than two tables after `from` statement in the query expressions. After multi-relation join operation, one can specify certain conditions to select rows from the joined table. The basic idea is that we iteratively invoke `table.select` from `Table.java` to join the first two relations, and join the obtained relation with the third relation. Finally, we will obtain a joined table with non-repeated columns from each separate relation, after which `ConditionClause` is applied. More details can be found in `CommandInterpreter.java`.
 3. Select All: Users can use `select *` to see all the data from the table. A `for` loop is used to get all the column names of the table. Then, normal `select` by the total names is executed.
 4. Condition “OR”: We support conditions with a mixture of `and` operation and `or` operation.
@@ -80,10 +83,37 @@ In *testing* folder, there are database files `blank.db`, `enrolled.db`, `schedu
 Please visit documentation [here](TestCases.md) for more test details.
 
 ## Difficulty Encountered & Solutions
-Facing difficulty when implementing enhanced function "order by", cause by changing HashMap into ArrayList, this caused printing multiple rows with the same selected condition. The correct one should be a single row with a unique condition.
 
+"order by"
 
+When implementing the enhanced function "order by", we changed HashMap into ArrayList. This update led to the bug of printing duplicated rows. The solution was to use a Hashmap to record the printed rows so that the program prints each row exactly once.
+
+"_input.next()"
+
+We suggest trying to use "_input.nextIf()" rather than "_input.next()". Our experience is that the latter one usually leads to more bugs.
+
+"aggregate functions and group by"
+
+The combination of aggregate functions and "group by" syntax is powerful. We implemented aggregate functions "avg", "count", "min" and "max". We also tried to implement "group by" but failed. Implementing any of them can be easy, but combining them together can be quite hard.  There are many reasons for this. The following content might provide some sense.
+
+* Assign _input_dup as an deep copy of _input. (This is implemented using Cloneable.)
+* Use a while loop with _input_dup.nextIf() to record if there exists "group by" syntax. Use String gb_col to record the columns following "group by". If there is no "group by", gb_col = "".
+* If gb_col = "", run the naive select functions.
+* Else, iterate through the result table obtained after "select", "from" and "where" operations and divide it into ...
+
+## How to run our program
+
+### Use Makefile
+
+1. Go to the file Table.java and change the read path!
+2. Enter "cd proj1" in the terminal
+3. Enter "make check" in the terminal!
+
+### Run Main.java
+
+1. Go to the file Table.java and change the read path!
+2. Run the main.java file
 
 ## Presentation Video Link
 
-https://cuhko365-my.sharepoint.com/:v:/g/personal/120090609_link_cuhk_edu_cn/Ed3DS1e8eoVPqPzizAdmyNQBEqQWCmFjDLqoRN7TOhw2nw?e=cVpTYw
+Please refer to videolink.txt.

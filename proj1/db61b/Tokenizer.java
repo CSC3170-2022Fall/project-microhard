@@ -10,7 +10,7 @@ import static db61b.Utils.*;
 
 /** Represents a stream of db61b tokens read from a given Scanner.
  *  @author P. N. Hilfinger. */
-class Tokenizer {
+public class Tokenizer implements Cloneable{
 
     /** Text of regular expressions that represent literals (possibly
      *  unterminated), identifiers, and comments (possibly
@@ -209,6 +209,14 @@ class Tokenizer {
         newCommand();
     }
 
+    protected Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     /** Matcher used for pattern matching. */
     private Matcher _mat;

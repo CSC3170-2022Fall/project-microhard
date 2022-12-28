@@ -327,14 +327,33 @@ class CommandInterpreter {
         return table;
     }
 
+    String gb_exist(Tokenizer input) {
+        while (! input.nextIs(";")) {
+            if (input.next() == "group" && input.next("by") == "by") {
+                return input.next();
+            }
+        }
+        return "";
+    }
+    
     /** Parse and execute a select clause from the token stream, returning the
      *  resulting table. */
     Table selectClause() {
         _input.next("select");
         ArrayList<String> col = new ArrayList<String>();
         ArrayList<Table> tab = new ArrayList<Table>();
-        /* Select all */
+        // Tokenizer _input_dup = (Tokenizer) _input.clone();
+        // System.out.println(_input_dup.nextIf("*"));
+        // String gb = gb_exist(_input_dup);  /* which one column to be grouped by */
+        // System.out.println(gb.isEmpty());
+        
+        // if (gb.isEmpty()) {
+                /* Select all */
+            // System.out.println("222");
+            // System.out.println(_input.nextIs(";"));
+
         if (_input.nextIf("*")) {
+            // System.out.println("333");
             _input.next("from");
             /* We need to get all the columns from the required tables.*/
             Table tab1 = tableName();
@@ -344,6 +363,7 @@ class CommandInterpreter {
                 tab.add(tab2);
             }
             for (int i = 0; i < tab.size(); i++) {
+                // System.out.println(tab.get(i));
                 Table tab_item = tab.get(i);
                 ArrayList<String> col_list = getAllCol(tab_item);
                 col.addAll(col_list);
@@ -361,15 +381,15 @@ class CommandInterpreter {
         else {
             // col.add(columnName());
             col = select_aux(col);
-            // boolean aggregate_func = not col.get(col.size() - 1).isEmpty();
+            // Boolean aggregate = ! get_aggregate(col.get(0)).isEmpty();
             while (_input.nextIf(",")) {
                 col = select_aux(col);
             }
-
+    
             if (test_compatibility(col)) {
                 throw error("Aggregate function without Group By does not allow other columns to exist!");
             }
-
+            
             _input.next("from");
             /* Here we consider the general case */
             Table table1 = tableName();
@@ -396,13 +416,17 @@ class CommandInterpreter {
         if (_input.nextIf("where")) {
             con = conditionClause(joined_table);
         }
-
+    
         String aggregate = null;
         if (col.size() == 1) {
             aggregate = get_aggregate(col.get(0));
         }
         if (aggregate == null) {
             // System.out.println("aggregate is null");
+            // System.out.println("111");
+            // joined_table.print();
+            // System.out.println("\n\n");
+    
             return joined_table.select(col, con.conList, con.operations);
         } else { /* If not null, col must have only one item */
             // System.out.println("aggregate is not null");
@@ -414,10 +438,22 @@ class CommandInterpreter {
             }
             col.set(0, agg_col);
             Table t = joined_table.select(col, con.conList, con.operations);
+    
+            // System.out.println("222");
+            // t.print();
+            // System.out.println("\n\n");
             return t.aggregate_(aggregate);
         }
-        // return null;
-        // return joined_table.select(col, con.conList, con.operations);
+            // return null;
+            // return joined_table.select(col, con.conList, con.operations);
+        // } else { /* group by */
+        //     ArrayList<String> gb_col = new ArrayList<String>();
+        //     for (Row r : _rows) {
+        //     }
+        //     Table joined_table = null;
+        //     return joined_table;
+        // }
+        
     }
 
     ArrayList<String> select_aux(ArrayList<String> col) {
@@ -443,7 +479,6 @@ class CommandInterpreter {
         } else {
             col.add(columnName());
         }
-        // col.add(aggregate_func);
         return col;
     }
 

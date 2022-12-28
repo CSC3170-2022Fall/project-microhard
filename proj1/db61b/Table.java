@@ -17,6 +17,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import static db61b.Utils.*;
 
@@ -171,14 +173,17 @@ class Table implements Iterable<Row> {
     /** Print my contents on the standard output. */
     void print() {
         // FILL IN
+        Map<Row, Boolean> map = new HashMap<>();
         int i = 0;
         for (Row r : _rows) {
-            System.out.print(" ");
-            for (i = 0; i < table_titles.length; i++) {
-                System.out.print(" ");
-                System.out.print(r.get(i));
+            if (map.get(r) == null) {
+                map.put(r,true);
+                for (i = 0; i < table_titles.length; i++) {
+                    System.out.print("  ");
+                    System.out.print(r.get(i));
+                }
+                System.out.print("\n");
             }
-            System.out.print("\n");
         }
     }
 

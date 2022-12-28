@@ -342,11 +342,11 @@ class CommandInterpreter {
         else {
             // col.add(columnName());
             col = select_aux(col);
+            // boolean aggregate_func = not col.get(col.size() - 1).isEmpty();
             while (_input.nextIf(",")) {
-                // col.add(columnName());
                 col = select_aux(col);
             }
-            
+
             if (test_compatibility(col)) {
                 throw error("Aggregate function without Group By does not allow other columns to exist!");
             }
@@ -424,6 +424,7 @@ class CommandInterpreter {
         } else {
             col.add(columnName());
         }
+        // col.add(aggregate_func);
         return col;
     }
 

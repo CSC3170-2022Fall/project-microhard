@@ -74,12 +74,13 @@ In *testing* folder, there are database files `blank.db`, `enrolled.db`, `schedu
 3. Select All: Users can use `select *` to see all the data from the table. A `for` loop is used to get all the column names of the table. Then, normal `select` by the total names is executed.
 4. Condition “OR”: We support conditions with a mixture of `and` operation and `or` operation.
 5. Results “Order by”: Users can reorder the result table in ascending/descending order based on the value(s) of one or more columns, in which `asc` or none for 'ascending' and `desc` for 'descending'. More details can be found in `selectStatement` method, `CommandInterpreter.java` file.
-6. Multi-Load
+6. Multi-Load: We suppoer loading tables in one line, e.g.`load students, enrolled, schedule;` instead of `load students;\nload enrolled;\nload schedule;`. When facing errors, it will throw the first error that encountered.
 7. Aggregate Function: Users can use `avg`, `count`, `min`, `max` to calculate the corresponding values. Note that only `count` supports non-numerical attribute. If a non-numerical attribute appear in the argument of `avg`, `min`, `max`, an error will occur. To support this functionality, `select_aux` is written to detect the presence of any aggregate function name. If an aggregate function exists, the pertinent value is computed and returned as a single-value table.
 
 Please visit documentation [here](TestCases.md) for more test details.
+
 ## Difficulty Encountered & Solutions
-*fill in the blank fill in the blank fill in the blank fill in the blank*
+Facing difficulty when implementing enhanced function "order by", cause by changing HashMap into ArrayList, this caused printing multiple rows with the same selected condition. The correct one should be a single row with a unique condition.
 
 
 

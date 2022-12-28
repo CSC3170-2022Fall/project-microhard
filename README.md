@@ -24,7 +24,7 @@ Our team consists of the following members, listed in the table below (the team 
 | 120090495  | 张家荣       | 120090495@link.cuhk.edu.cn | [Yae-mikooo](https://github.com/Yae-mikooo) | *fill in the blank*|
 | 119010269  | 宋泽方       | 119010269@link.cuhk.edu.cn | [Song199010](https://github.com/Song199010) | *fill in the blank*|
 | 120090565  | 胡文涵       | 120090565@link.cuhk.edu.cn | [Clarice927](https://github.com/Clarice927) | *fill in the blank*|
-| 119010216  | 路东竹渊     | 119010216@link.cuhk.edu.cn | [Tim-Lu-cuhksz](https://github.com/Tim-Lu-cuhksz) |*fill in the blank*|
+| 119010216  | 路东竹渊     | 119010216@link.cuhk.edu.cn | [Tim-Lu-cuhksz](https://github.com/Tim-Lu-cuhksz) |Basic: Implement `selectStatement`, `selectClause` in `CommandInterpreter.java` <br />Enhanced: Multi-relation Join & Aggregate Functions <br />Presentation: Present the seond part|
 | 120090771  | 邱纬纶       | 120090771@link.cuhk.edu.cn | [alanqwl](https://github.com/alanqwl) | *fill in the blank*|
 | 120090224  | 杨尚霖       | 120090224@link.cuhk.edu.cn | [UnitedSnakes](https://github.com/CSC3170-2022Fall/project-microhard/commits?author=UnitedSnakes) | *fill in the blank*|
 | 120090470  | 李鹏         | 120090470@link.cuhk.edu.cn | [pengleee](https://github.com/pengleee) | *fill in the blank*|
@@ -70,11 +70,12 @@ In *testing* folder, there are database files `blank.db`, `enrolled.db`, `schedu
 5. Join two tables
 ### Enhanced Functions
 1. Case-Insensitive to User’s Input
-2. Multiple-Relations Joint
+2. Multiple-Relations Joint: Users can specify more than two tables after `from` statement in the query expressions. After multi-relation join operation, one can specify certain conditions to select rows from the joined table. The basic idea is that we iteratively invoke `table.select` from `Table.java` to join the first two relations, and join the obtained relation with the third relation. Finally, we will obtain a joined table with non-repeated columns from each separate relation, after which `ConditionClause` is applied. More details can be found in `CommandInterpreter.java`.
 3. Select All: Users can use `select *` to see all the data from the table. A `for` loop is used to get all the column names of the table. Then, normal `select` by the total names is executed.
-4. Condition “OR”: We supply conditions with a mixture of `and` operation and `or` operation.
+4. Condition “OR”: We support conditions with a mixture of `and` operation and `or` operation.
 5. Results “Order by”: Users can reorder the result table in ascending/descending order based on the value(s) of one or more columns, in which `asc` or none for 'ascending' and `desc` for 'descending'. More details can be found in `selectStatement` method, `CommandInterpreter.java` file.
 6. Multi-Load
+7. Aggregate Function: Users can use `avg`, `count`, `min`, `max` to calculate the corresponding values. Note that only `count` supports non-numerical attribute. If a non-numerical attribute appear in the argument of `avg`, `min`, `max`, an error will occur. To support this functionality, `select_aux` is written to detect the presence of any aggregate function name. If an aggregate function exists, the pertinent value is computed and returned as a single-value table.
 
 Please visit documentation [here](TestCases.md) for more test details.
 ## Difficulty Encountered & Solutions
@@ -84,5 +85,4 @@ Please visit documentation [here](TestCases.md) for more test details.
 
 ## Presentation Video Link
 
-https://cuhko365-my.sharepoint.com/personal/120090609_link_cuhk_edu_cn/_layouts/15/stream.aspx?id=%2Fpersonal%2F120090609%5Flink%5Fcuhk%5Fedu%5Fcn%2FDocuments%2F%E9%99%84%E4%BB%B6%2F3170pre%2Emp4&wdLOR=c5147A277%2D8F05%2DAE4F%2DBBA9%2D2A96F8E81232&ga=1
-
+https://cuhko365-my.sharepoint.com/:v:/g/personal/120090609_link_cuhk_edu_cn/Ed3DS1e8eoVPqPzizAdmyNQBEqQWCmFjDLqoRN7TOhw2nw?e=cVpTYw
